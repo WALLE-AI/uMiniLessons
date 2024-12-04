@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "umimilessons"
+version = "0.01"
+description = ""
+authors = ["WALL-AI <gaojing850063636@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+loguru = "^0.7.2"
+pandas = "^2.2.3"
+numpy = "^2.1.3"
+pillow = "^11.0.0"
+matplotlib = "^3.9.3"
+transformers = "^4.46.3"
+scikit-learn = "^1.5.2"
+torch = "^2.5.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
