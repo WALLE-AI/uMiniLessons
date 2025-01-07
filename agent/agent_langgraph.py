@@ -3,6 +3,7 @@
 1、解析论文所有内容，分别包括内容、图片和表格
 2、整体解读出
 '''
+import getpass
 import os
 import threading
 import httpx
@@ -15,6 +16,9 @@ from typing_extensions import TypedDict
 
 from langgraph.graph import StateGraph, START, END
 from langgraph.graph.message import add_messages
+
+from dotenv import load_dotenv
+load_dotenv
 
 class LanggrapAgentBuild():
     def __init__(self) -> None:
@@ -87,6 +91,17 @@ def stream_graph_updates(user_input: str):
             print("Assistant:", value["messages"][-1].content)
 
 
+def test_travily_search_engin():
+    from langchain_community.tools.tavily_search import TavilySearchResults
+    tool = TavilySearchResults(max_results=2)
+    tools = [tool]
+    tool.invoke("What's a 'node' in LangGraph?")
+
+def _set_env(var: str):
+    if not os.environ.get(var):
+        os.environ[var] = getpass.getpass(f"{var}: ")
+
+
 def test_langgraph_stream():
     while True:
         try:
@@ -120,7 +135,7 @@ def test_langchain_openai_client():
         
 if __name__ == "__main__":
     loguru.logger.info(f"langgraph agent build")
-    test_langgraph_stream()
+    test_travily_search_engin()
 
     
         
